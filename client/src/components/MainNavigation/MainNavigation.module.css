@@ -1,0 +1,59 @@
+.header {
+   
+}
+
+.nav {
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+}
+
+.hamburger {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: max-content;
+    height: 60px;
+    position: relative;
+    padding: 0.2rem;
+    cursor: pointer;
+}
+
+.hamburger div {
+    width: 70px;
+    height: 10px;
+    border-radius: 8px;
+    transition: all 0.2s ease-in-out;
+    background-color: #333;
+}
+
+.hamburger input:checked ~ .hamburger-middle {
+    opacity: 0;
+}
+
+.hamburger input:checked ~ .hamburger-top {
+    position: absolute;
+    top: 40%;
+    transform: rotate(45deg);
+}
+
+.hamburger input:checked ~ .hamburger-bottom {
+    position: absolute;
+    top: 40%;
+    transform: rotate(-45deg);
+}
+
+.hamburger input {
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: inline-block;
+    width: 78px;
+    height: 60px;
+    padding: 0;
+    margin: 0;
+    outline: none;
+    z-index: 1;   
+    cursor: pointer;
+    appearance: none;
+}
