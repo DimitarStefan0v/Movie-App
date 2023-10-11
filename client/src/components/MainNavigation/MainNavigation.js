@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import ReactDOM from 'react-dom';
 import { NavLink } from 'react-router-dom';
 
 import Backdrop from '../UI/Backdrop/Backdrop';
@@ -15,7 +16,7 @@ const MainNavigation = () => {
     return (
         <>
             <header className={classes.header}>
-                <nav className={classes.nav}>
+                <nav className={classes['nav-mobile']}>
                     <div className={showNavigation ? `${classes.hamburger} ${classes.open}` : `${classes.hamburger}`} onClick={toggleNavigation}>
                         <div className={classes['hamburger-top']}></div>
                         <div className={classes['hamburger-middle']}></div>
@@ -47,9 +48,38 @@ const MainNavigation = () => {
                             </NavLink>
                         </li>
                     </ul>
+                    {ReactDOM.createPortal(
+                        <Backdrop className={showNavigation ? '' : 'collapse'} onClick={toggleNavigation} />,
+                        document.getElementById('backdrop-root')
+                    )}
+                </nav>
+
+                <nav className={classes['nav-desktop']}>
+                    <ul className={classes.links}>
+                        <li>
+                            <NavLink
+                                className={({ isActive }) => isActive ? `${classes.link} ${classes.active}` : `${classes.link}`}
+                                to="/"
+                            >Home
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink
+                                className={({ isActive }) => isActive ? `${classes.link} ${classes.active}` : `${classes.link}`}
+                                to="/movies"
+                            >Movies
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink
+                                className={({ isActive }) => isActive ? `${classes.link} ${classes.active}` : `${classes.link}`}
+                                to="/series"
+                            >TV Shows
+                            </NavLink>
+                        </li>
+                    </ul>
                 </nav>
             </header>
-            <Backdrop className={showNavigation ? '' : 'collapse'} onClick={toggleNavigation} />
         </>
     );
 };

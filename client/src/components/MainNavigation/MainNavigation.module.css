@@ -1,13 +1,26 @@
 .header {
-   
+   height: 100px;
+   position: fixed;
+   top: 0;
+   left: 0;
+   width: 100vw;
+   z-index: 2;
 }
 
-.nav {
+.nav-desktop {
+    display: none;
+    max-width: 1080px;
+    margin: 0 auto;
+}
+
+.nav-mobile {
     display: flex;
     flex-direction: column;
     padding: 1rem;
     position: relative;
     transition: all 0.3s ease-in-out;
+    max-width: 1080px;
+    margin: 0 auto;
 }
 
 .hamburger {
@@ -88,4 +101,35 @@
 .link.active {
     color: white;
     background-color: red;
+}
+
+@media (min-width: 500px) {
+    .header {
+        height: 70px;
+        background-color: #191919;
+    }
+
+    .nav-mobile {
+        display: none;
+    }
+
+    .nav-desktop {
+        display: block;
+        height: 100%;
+    }
+
+    .links {
+        margin: 0;
+        padding: 0 1rem;
+        height: 100%;
+        position: relative;
+        display: flex;
+        flex-direction: row;
+        gap: 0.3rem;
+        justify-content: end;
+        align-items: center;
+        border-radius: 0px;
+        background-color: #191919;
+        color: red;
+    }
 }
