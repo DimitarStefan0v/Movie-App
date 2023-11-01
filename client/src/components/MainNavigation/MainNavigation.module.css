@@ -9,7 +9,7 @@
 
 .nav-desktop {
     display: none;
-    max-width: 1080px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
@@ -19,7 +19,7 @@
     padding: 1rem;
     position: relative;
     transition: all 0.3s ease-in-out;
-    max-width: 1080px;
+    max-width: 1200px;
     margin: 0 auto;
 }
 
@@ -92,7 +92,6 @@
     color: inherit;
     padding: 0.5rem 1rem;
     border-radius: 8px;
-    width: 100%;
     display: inline-block;
     text-align: center;
     width: 120px;
