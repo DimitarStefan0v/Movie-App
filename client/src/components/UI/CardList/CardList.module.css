@@ -1,5 +1,4 @@
 .container {
-    margin-top: 100px;
     display: grid;
     grid-template-columns: repeat(auto-fill, 270px);
     grid-row-gap: 2rem;
