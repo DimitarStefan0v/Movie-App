@@ -1,4 +1,6 @@
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import { getMoviesWithPages } from '../../services/getMovies';
 
 import CardList from '../../components/UI/CardList/CardList';
@@ -9,6 +11,7 @@ import Pagination from '../../components/UI/Pagination/Pagination';
 const MoviesPage = () => {
     const [moviesData, setMoviesData] = useState({});
     const [currentPage, setCurrentPage] = useState(1);
+    const navigate = useNavigate();
 
     useEffect(() => {
         const fetchMovies = async () => {
@@ -17,9 +20,9 @@ const MoviesPage = () => {
             window.scrollTo(0, 0);
         }
 
-        fetchMovies();
+        fetchMovies().catch(err => navigate('/error'));
     },
-        [currentPage]);
+        [currentPage, navigate]);
 
     const changePageHandler = (selectedPage) => {
         setCurrentPage(selectedPage);
@@ -27,7 +30,7 @@ const MoviesPage = () => {
 
     return (
         <>
-            <CardList>{moviesData.results?.map(movie => <Card key={movie.id} movie={movie} />)}
+            <CardList>{moviesData.results?.map(movie => <Card key={movie.id} poster={movie.poster_path} title={movie.title} />)}
             </CardList>
             <Pagination changePageHandler={changePageHandler} currentPage={currentPage} lastPage={500} />
         </>
