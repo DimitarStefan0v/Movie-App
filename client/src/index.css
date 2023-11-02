@@ -14,4 +14,6 @@ body {
     margin: 0 auto;
     max-width: 1200px;
     margin-top: 100px;
+    background-color: #310e68;
+    background-image: linear-gradient(316deg, #310e68 0%, #5f0f40 74%);
 }

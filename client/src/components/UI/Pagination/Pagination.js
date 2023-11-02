@@ -1,5 +1,6 @@
-import classes from './Pagination.module.css';
 import { useState } from 'react';
+
+import classes from './Pagination.module.css';
 
 const Pagination = (props) => {
     const [previousPages, setPreviousPages] = useState([props.currentPage - 3 ,props.currentPage - 2 ,props.currentPage - 1]);
