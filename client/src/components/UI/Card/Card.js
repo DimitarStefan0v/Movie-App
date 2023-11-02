@@ -5,8 +5,8 @@ import classes from './Card.module.css';
 const Card = (props) => {
     return (
         <div className={classes.card}>
-            <img src={urls.images + props.movie.poster_path} alt={props.movie.title} />
-            <div className={classes.title}>{props.movie.title}</div>
+            <img src={props.poster ? urls.images + props.poster : urls.defaultImage} alt={props.title} />
+            <div className={classes.title}>{props.title}</div>
         </div>
     );
 };

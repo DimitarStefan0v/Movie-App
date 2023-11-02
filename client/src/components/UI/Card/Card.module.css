@@ -14,8 +14,9 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background-color: whitesmoke;
+    background-color: #6d31cf;
     height: 50px;
     font-size: 1.1rem;
     overflow: auto;
+    color: white;
 }
