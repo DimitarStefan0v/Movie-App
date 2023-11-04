@@ -1,0 +1,20 @@
+.list {
+    list-style: none;
+    display: flex;
+    gap: 0.4rem;
+    justify-content: center;
+}
+
+.item {
+    color: #e3dbdb;
+}
+
+.item:hover {
+    color: white;
+    border-bottom: 4px solid red;
+}
+
+.current {
+    color: white;
+    border-bottom: 4px solid red;
+}
