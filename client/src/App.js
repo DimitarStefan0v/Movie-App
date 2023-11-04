@@ -5,6 +5,7 @@ import ErrorPage from './pages/Error/Error';
 import HomePage from './pages/Home/Home';
 import MoviesPage from './pages/Movies/Movies';
 import SeriesPage from './pages/Series/Series';
+import PeoplePage from './pages/People/People';
 
 const router = createBrowserRouter([
     {
@@ -14,7 +15,8 @@ const router = createBrowserRouter([
         children: [
             { index: true, element: <HomePage /> },
             { path: 'movies', element: <MoviesPage /> },
-            { path: 'series', element: <SeriesPage /> }
+            { path: 'series', element: <SeriesPage /> },
+            { path: 'celebs', element: <PeoplePage /> }
         ]
     }
 ]);
