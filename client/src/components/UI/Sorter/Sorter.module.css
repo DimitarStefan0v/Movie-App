@@ -1,12 +1,15 @@
 .list {
     list-style: none;
     display: flex;
+    flex-direction: column;
     gap: 0.4rem;
     justify-content: center;
+    align-items: center;
 }
 
 .item {
     color: #e3dbdb;
+    width: fit-content;
 }
 
 .item:hover {
@@ -17,4 +20,10 @@
 .current {
     color: white;
     border-bottom: 4px solid red;
+}
+
+@media (min-width: 555px) {
+    .list {
+        flex-direction: row;
+    }
 }
