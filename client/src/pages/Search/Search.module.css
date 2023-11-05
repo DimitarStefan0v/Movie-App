@@ -4,12 +4,69 @@
 }
 
 .form {
-    text-align: center;
-
+    display: flex;
+    justify-content: center;
 }
 
 .searchHeading {
     color: white;
     text-align: center;
     margin-top: 1rem;
+}
+
+.input {
+    outline: none;
+    border: none;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    padding: 5px;
+    font-family: inherit;
+}
+
+input:focus,
+input:active {
+    outline: 4px solid #6d31cf;
+    padding-left: 15px;
+}
+
+.select {
+    font-family: inherit;
+}
+
+input:focus ~ .select,
+input:active ~ .select {
+    margin-left: 4px;
+    outline: 4px solid #6d31cf;
+}
+
+input:focus ~ .button,
+input:active ~ .button {
+    margin-left: 4px;
+    outline: 4px solid #6d31cf;
+}
+
+.button {
+    font-family: inherit;
+    border: none;
+    background-color: white;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+}
+
+.button:hover {
+    background-color: #6d31cf;
+}
+
+@media (min-width: 450px) {
+    .input {
+        font-size: 1.1rem;
+    }
+
+    .select {
+        font-size: 1.1rem;
+    }
+
+    .button {
+        font-size: 1.1rem;
+    }
 }

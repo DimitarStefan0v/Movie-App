@@ -66,13 +66,13 @@ const SearchPage = () => {
     return (
         <div><h1 className={classes.heading}>Search by typing a word or phrase in the search box at the top of this page.</h1>
             <form className={classes.form}>
-                <input id="search" type="text" value={searchData} onChange={inputHandler} />
-                <select id="type" value={selected} onChange={selectHandler}>
+                <input className={classes.input} type="text" value={searchData} onChange={inputHandler} placeholder='Start typing here...' />
+                <select className={classes.select} value={selected} onChange={selectHandler}>
                     {options.map(option => (
                         <option key={option.value} value={option.value}>{option.text}</option>
                     ))}
                 </select>
-                <button type='button'>Search</button>
+                <button type="button" className={classes.button}>Search</button>
             </form>
 
             {showResults()}
