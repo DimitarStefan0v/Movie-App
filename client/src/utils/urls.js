@@ -4,4 +4,5 @@ export const urls = {
     movies: 'https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US',
     series: 'https://api.themoviedb.org/3/discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US',
     people: 'https://api.themoviedb.org/3/person/popular?language=en-US',
+    search: 'https://api.themoviedb.org/3/search',
 };

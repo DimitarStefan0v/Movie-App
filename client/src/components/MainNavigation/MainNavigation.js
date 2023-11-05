@@ -55,6 +55,14 @@ const MainNavigation = () => {
                             >Celebs
                             </NavLink>
                         </li>
+                        <li>
+                            <NavLink
+                                className={({ isActive }) => isActive ? `${classes.link} ${classes.active}` : `${classes.link}`}
+                                to="/search"
+                                onClick={toggleNavigation}
+                            >Search
+                            </NavLink>
+                        </li>
                     </ul>
                     {ReactDOM.createPortal(
                         <Backdrop className={showNavigation ? '' : 'collapse'} onClick={toggleNavigation} />,
@@ -90,6 +98,13 @@ const MainNavigation = () => {
                                 className={({ isActive }) => isActive ? `${classes.link} ${classes.active}` : `${classes.link}`}
                                 to="/celebs"
                             >Celebs
+                            </NavLink>
+                        </li>
+                        <li>
+                            <NavLink
+                                className={({ isActive }) => isActive ? `${classes.link} ${classes.active}` : `${classes.link}`}
+                                to="/search"
+                            >Search
                             </NavLink>
                         </li>
                     </ul>
