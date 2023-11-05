@@ -51,7 +51,7 @@ const MoviesPage = () => {
     const showMovies = <>
         <Sorter currentFilter={currentFilter} changeSortQueryHandler={changeSortQueryHandler} />
         <CardList>{moviesData.results?.map(movie => <Card key={movie.id} poster={movie.poster_path} title={movie.title} />)}</CardList>
-        <Pagination changePageHandler={changePageHandler} currentPage={currentPage} lastPage={500} />
+        <Pagination changePageHandler={changePageHandler} currentPage={currentPage} lastPage={moviesData.total_pages > 500 ? 500 : moviesData.total_pages} />
     </>;
 
     return (

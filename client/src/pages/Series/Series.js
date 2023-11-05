@@ -50,7 +50,7 @@ const SeriesPage = () => {
     const showSeries = <>
         <Sorter currentFilter={currentFilter} changeSortQueryHandler={changeSortQueryHandler} />
         <CardList>{seriesData.results?.map(serie => <Card key={serie.id} poster={serie.poster_path} title={serie.name} />)}</CardList>
-        <Pagination changePageHandler={changePageHandler} currentPage={currentPage} lastPage={500} />
+        <Pagination changePageHandler={changePageHandler} currentPage={currentPage} lastPage={seriesData.total_pages > 500 ? 500 : seriesData.total_pages} />
     </>;
 
     return (

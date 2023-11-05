@@ -43,7 +43,7 @@ const PeoplePage = () => {
 
     const showPeople = <>
         <CardList>{peopleData.results?.map(person => <Card key={person.id} poster={person.profile_path} title={person.name} />)}</CardList>
-        <Pagination changePageHandler={changePageHandler} currentPage={currentPage} lastPage={500} />
+        <Pagination changePageHandler={changePageHandler} currentPage={currentPage} lastPage={peopleData.total_pages > 500 ? 500 : peopleData.total_pages} />
     </>;
 
     return (
