@@ -31,6 +31,8 @@ input:active {
 
 .select {
     font-family: inherit;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
 }
 
 input:focus ~ .select,

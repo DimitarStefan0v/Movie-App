@@ -51,8 +51,8 @@ const SearchPage = () => {
             return undefined;
         } else if (results.results?.length === 0) {
             return (<>
-                <div>Results for "{searchData}"</div>
-                <div>Nothing Found Sorry</div>
+                <div className={classes.searchHeading}>Results for "{searchData}"</div>
+                <div className={classes.searchHeading}>Nothing Found Sorry</div>
             </>);
         } else {
             return (<>
@@ -72,7 +72,7 @@ const SearchPage = () => {
                         <option key={option.value} value={option.value}>{option.text}</option>
                     ))}
                 </select>
-                <button type="button" className={classes.button}>Search</button>
+                {/* <button type="button" className={classes.button}>Search</button> */}
             </form>
 
             {showResults()}
