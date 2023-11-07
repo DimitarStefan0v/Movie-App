@@ -7,6 +7,7 @@ import CardList from '../../components/UI/CardList/CardList';
 import Card from '../../components/UI/Card/Card';
 import Pagination from '../../components/UI/Pagination/Pagination';
 import Loader from '../../components/UI/Loader/Loader';
+import BackToTop from '../../components/UI/BackToTop/BackToTop';
 
 const PeoplePage = () => {
     const [peopleData, setPeopleData] = useState({});
@@ -44,6 +45,7 @@ const PeoplePage = () => {
     const showPeople = <>
         <CardList>{peopleData.results?.map(person => <Card key={person.id} poster={person.profile_path} title={person.name} />)}</CardList>
         <Pagination changePageHandler={changePageHandler} currentPage={currentPage} lastPage={peopleData.total_pages > 500 ? 500 : peopleData.total_pages} />
+        <BackToTop />
     </>;
 
     return (

@@ -6,6 +6,7 @@ import { getSearchDataWithPages } from '../../services/getData';
 import CardList from '../../components/UI/CardList/CardList';
 import Card from '../../components/UI/Card/Card';
 import Pagination from '../../components/UI/Pagination/Pagination';
+import BackToTop from '../../components/UI/BackToTop/BackToTop';
 
 import classes from './Search.module.css';
 
@@ -30,7 +31,7 @@ const SearchPage = () => {
         }
 
         fetchData().catch(err => navigate('/error'));
-      
+
     }, [selected, searchData, currentPage, navigate])
 
     const inputHandler = (ev) => {
@@ -59,6 +60,7 @@ const SearchPage = () => {
                 <div className={classes.searchHeading}>Results for "{searchData}"</div>
                 <CardList>{results.results?.map(item => <Card key={item.id} poster={selected === 'person' ? item.profile_path : item.poster_path} title={selected === 'movie' ? item.title : item.name} />)}</CardList>
                 <Pagination changePageHandler={changePageHandler} currentPage={currentPage} lastPage={results.total_pages > 500 ? 500 : results.total_pages} />
+                <BackToTop />
             </>);
         }
     }

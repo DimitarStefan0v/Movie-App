@@ -8,6 +8,7 @@ import Card from '../../components/UI/Card/Card';
 import Sorter from '../../components/UI/Sorter/Sorter';
 import Pagination from '../../components/UI/Pagination/Pagination';
 import Loader from '../../components/UI/Loader/Loader';
+import BackToTop from '../../components/UI/BackToTop/BackToTop';
 
 const SeriesPage = () => {
     const [seriesData, setSeriesData] = useState({});
@@ -51,6 +52,7 @@ const SeriesPage = () => {
         <Sorter currentFilter={currentFilter} changeSortQueryHandler={changeSortQueryHandler} />
         <CardList>{seriesData.results?.map(serie => <Card key={serie.id} poster={serie.poster_path} title={serie.name} />)}</CardList>
         <Pagination changePageHandler={changePageHandler} currentPage={currentPage} lastPage={seriesData.total_pages > 500 ? 500 : seriesData.total_pages} />
+        <BackToTop />
     </>;
 
     return (

@@ -8,6 +8,7 @@ import Card from '../../components/UI/Card/Card';
 import Sorter from '../../components/UI/Sorter/Sorter';
 import Pagination from '../../components/UI/Pagination/Pagination';
 import Loader from '../../components/UI/Loader/Loader';
+import BackToTop from '../../components/UI/BackToTop/BackToTop';
 
 
 const MoviesPage = () => {
@@ -52,6 +53,7 @@ const MoviesPage = () => {
         <Sorter currentFilter={currentFilter} changeSortQueryHandler={changeSortQueryHandler} />
         <CardList>{moviesData.results?.map(movie => <Card key={movie.id} poster={movie.poster_path} title={movie.title} />)}</CardList>
         <Pagination changePageHandler={changePageHandler} currentPage={currentPage} lastPage={moviesData.total_pages > 500 ? 500 : moviesData.total_pages} />
+        <BackToTop />
     </>;
 
     return (
