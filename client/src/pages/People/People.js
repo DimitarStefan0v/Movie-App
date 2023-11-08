@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 import { getPeopleWithPages } from '../../services/getPeople';
 
@@ -43,7 +43,7 @@ const PeoplePage = () => {
     };
 
     const showPeople = <>
-        <CardList>{peopleData.results?.map(person => <Card key={person.id} poster={person.profile_path} title={person.name} />)}</CardList>
+        <CardList>{peopleData.results?.map(person => <Link key={person.id} to={`/person/${person.id}/details`}><Card poster={person.profile_path} title={person.name} /></Link>)}</CardList>
         <Pagination changePageHandler={changePageHandler} currentPage={currentPage} lastPage={peopleData.total_pages > 500 ? 500 : peopleData.total_pages} />
         <BackToTop />
     </>;

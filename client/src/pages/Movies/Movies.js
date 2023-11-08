@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 import { getMoviesWithPages } from '../../services/getMovies';
 
@@ -51,7 +51,7 @@ const MoviesPage = () => {
 
     const showMovies = <>
         <Sorter currentFilter={currentFilter} changeSortQueryHandler={changeSortQueryHandler} />
-        <CardList>{moviesData.results?.map(movie => <Card key={movie.id} poster={movie.poster_path} title={movie.title} />)}</CardList>
+        <CardList>{moviesData.results?.map(movie => <Link key={movie.id} to={`/movie/${movie.id}/details`}><Card poster={movie.poster_path} title={movie.title} /></Link>)}</CardList>
         <Pagination changePageHandler={changePageHandler} currentPage={currentPage} lastPage={moviesData.total_pages > 500 ? 500 : moviesData.total_pages} />
         <BackToTop />
     </>;

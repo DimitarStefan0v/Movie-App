@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 import { getSeriesWithPages } from '../../services/getSeries';
 
@@ -50,7 +50,7 @@ const SeriesPage = () => {
 
     const showSeries = <>
         <Sorter currentFilter={currentFilter} changeSortQueryHandler={changeSortQueryHandler} />
-        <CardList>{seriesData.results?.map(serie => <Card key={serie.id} poster={serie.poster_path} title={serie.name} />)}</CardList>
+        <CardList>{seriesData.results?.map(serie => <Link key={serie.id} to={`/tv/${serie.id}/details`}><Card poster={serie.poster_path} title={serie.name} /></Link>)}</CardList>
         <Pagination changePageHandler={changePageHandler} currentPage={currentPage} lastPage={seriesData.total_pages > 500 ? 500 : seriesData.total_pages} />
         <BackToTop />
     </>;

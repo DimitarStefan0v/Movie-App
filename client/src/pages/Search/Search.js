@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 import { getSearchDataWithPages } from '../../services/getData';
 
@@ -58,7 +58,7 @@ const SearchPage = () => {
         } else {
             return (<>
                 <div className={classes.searchHeading}>Results for "{searchData}"</div>
-                <CardList>{results.results?.map(item => <Card key={item.id} poster={selected === 'person' ? item.profile_path : item.poster_path} title={selected === 'movie' ? item.title : item.name} />)}</CardList>
+                <CardList>{results.results?.map(item => <Link key={item.id} to={`/${selected}/${item.id}/details`}><Card poster={selected === 'person' ? item.profile_path : item.poster_path} title={selected === 'movie' ? item.title : item.name} /></Link>)}</CardList>
                 <Pagination changePageHandler={changePageHandler} currentPage={currentPage} lastPage={results.total_pages > 500 ? 500 : results.total_pages} />
                 <BackToTop />
             </>);
