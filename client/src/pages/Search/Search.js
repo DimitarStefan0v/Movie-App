@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 
-import { getSearchDataWithPages } from '../../services/getData';
+import { getSearchDataWithPages } from '../../services/searchService';
 
 import CardList from '../../components/UI/CardList/CardList';
 import Card from '../../components/UI/Card/Card';

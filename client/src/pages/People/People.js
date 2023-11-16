@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 
-import { getPeopleWithPages } from '../../services/getPeople';
+import { getPeopleWithPages } from '../../services/peopleService';
 
 import CardList from '../../components/UI/CardList/CardList';
 import Card from '../../components/UI/Card/Card';

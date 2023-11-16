@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 
-import { getMoviesWithPages } from '../../services/getMovies';
+import { getMoviesWithPages } from '../../services/moviesService';
 
 import CardList from '../../components/UI/CardList/CardList';
 import Card from '../../components/UI/Card/Card';
