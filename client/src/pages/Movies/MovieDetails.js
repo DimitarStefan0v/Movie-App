@@ -5,8 +5,9 @@ import { getMovieById } from '../../services/moviesService';
 import { urls } from '../../utils/urls';
 
 import Loader from '../../components/UI/Loader/Loader';
+import BackToTop from '../../components/UI/BackToTop/BackToTop';
 
-import classes from './Movies.module.css';
+import classes from './MovieDetails.module.css';
 
 const MovieDetailsPage = () => {
     const { movieId } = useParams();
@@ -41,7 +42,7 @@ const MovieDetailsPage = () => {
         <h2>{movie.title}</h2>
         <div className={classes['image-overview']}>
             <div className={classes['image-wrapper']}><img src={movie.poster_path ? urls.images + movie.poster_path : urls.defaultImage} alt={movie.title} /></div>
-            <div className={classes.overview}>{movie.overview}</div>
+            <div className={classes.overview}>{movie.overview?.length > 700 ? movie.overview.substring(0, 700) + '...' : movie.overview}</div>
         </div>
         <div className={classes.details}>
             <div>Release Date: {movie.release_date}</div>
@@ -49,6 +50,7 @@ const MovieDetailsPage = () => {
             <div className={classes.genres}>{movie.genres?.map(x => <span key={x.id}>{x.name}</span>)}</div>
         </div>
         <a className={classes.source} href="https://www.themoviedb.org/" target='blank'>Data Source</a>
+        <BackToTop />
     </div>;
 
     return (
