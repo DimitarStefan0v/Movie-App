@@ -1,12 +1,17 @@
 import { useState, useEffect } from 'react';
 
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 import { getMoviesWithPages } from '../../services/moviesService';
 import { getSeriesWithPages } from '../../services/seriesService';
 import { getPeopleWithPages } from '../../services/peopleService';
 
 import Loader from '../../components/UI/Loader/Loader';
+import CardList from '../../components/UI/CardList/CardList';
+import Card from '../../components/UI/Card/Card';
+import BackToTop from '../../components/UI/BackToTop/BackToTop';
+
+import classes from './Home.module.css';
 
 const HomePage = () => {
     const [movies, setMovies] = useState([]);
@@ -46,9 +51,25 @@ const HomePage = () => {
         return () => clearTimeout(timer);
     }, [navigate]);
 
+    const showResults = <>
+        <h2 className={classes.heading}>Top movies by popularity</h2>
+        <CardList>
+            {movies.map(movie => <Link key={movie.id} to={`/movie/${movie.id}/details`}><Card poster={movie.poster_path} title={movie.title} /></Link>)}
+        </CardList>
+        <h2 className={classes.heading}>Top series by popularity</h2>
+        <CardList>
+            {series.map(serie => <Link key={serie.id} to={`/tv/${serie.id}/details`}><Card poster={serie.poster_path} title={serie.name} /></Link>)}
+        </CardList>
+        <h2 className={classes.heading}>Top celebs by popularity</h2>
+        <CardList>
+            {celebs.map(celeb => <Link key={celeb.id} to={`/person/${celeb.id}/details`}><Card poster={celeb.profile_path} title={celeb.name} /></Link>)}
+        </CardList>
+        <BackToTop />
+    </>;
+
     return (
         <>
-            {isLoading ? <Loader /> : console.log(celebs)}
+            {isLoading ? <Loader /> : showResults}
         </>
     );
 };

@@ -36,7 +36,7 @@ const PersonDetailsPage = () => {
         return () => clearTimeout(timer);
     }, [personId, navigate]);
 
-    const showPerson = <div className={classes.wrapper}> {console.log(person)}
+    const showPerson = <div className={classes.wrapper}>
         <h2>{person.name}</h2>
         <div className={classes['image-overview']}>
             <div className={classes['image-wrapper']}><img src={person.profile_path ? urls.images + person.profile_path : urls.defaultImage} alt={person.name} /></div>

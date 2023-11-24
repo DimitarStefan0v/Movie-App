@@ -38,7 +38,7 @@ const MovieDetailsPage = () => {
 
     }, [movieId, navigate]);
 
-    const showMovie = <div className={classes.wrapper}> {console.log(movie)}
+    const showMovie = <div className={classes.wrapper}>
         <h2>{movie.title}</h2>
         <div className={classes['image-overview']}>
             <div className={classes['image-wrapper']}><img src={movie.poster_path ? urls.images + movie.poster_path : urls.defaultImage} alt={movie.title} /></div>

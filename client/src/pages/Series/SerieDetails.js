@@ -36,7 +36,7 @@ const SerieDetailsPage = () => {
         return () => clearTimeout(timer);
     }, [serieId, navigate]);
 
-    const showSerie = <div className={classes.wrapper}> {console.log(serie)}
+    const showSerie = <div className={classes.wrapper}>
         <h2>{serie.name}</h2>
         <div className={classes['image-overview']}>
             <div className={classes['image-wrapper']}><img src={serie.poster_path ? urls.images + serie.poster_path : urls.defaultImage} alt={serie.name} /></div>
