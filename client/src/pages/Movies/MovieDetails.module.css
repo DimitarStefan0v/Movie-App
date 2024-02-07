@@ -57,7 +57,7 @@ img {
     text-decoration: underline;
 }
 
-@media (min-width: 730px) {
+@media (min-width: 600px) {
     .wrapper {
         background-color: #6d31cf;
     }
