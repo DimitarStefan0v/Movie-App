@@ -8,7 +8,8 @@
     background-color: #6d31cf;
     padding: 1rem;
     border-radius: 8px;
-    width: fit-content;
+    max-width: 730px;
+    width: 100%;
     margin: 0 auto;
 }
 
@@ -55,4 +56,10 @@ img {
 .source:hover {
     color: red;
     text-decoration: underline;
+}
+
+@media (min-width: 730px) {
+    .wrapper {
+        background-color: #6d31cf;
+    }
 }
