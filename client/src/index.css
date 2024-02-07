@@ -21,3 +21,7 @@ body {
 a {
     text-decoration: none;
 }
+
+.App {
+    margin-bottom: 20px;
+}
