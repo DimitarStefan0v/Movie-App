@@ -10,57 +10,56 @@ import Pagination from '../../components/UI/Pagination/Pagination';
 import Loader from '../../components/UI/Loader/Loader';
 import BackToTop from '../../components/UI/BackToTop/BackToTop';
 
-
 const MoviesPage = () => {
-    const [moviesData, setMoviesData] = useState({});
-    const [currentPage, setCurrentPage] = useState(1);
-    const [currentFilter, setCurrentFilter] = useState('popularity.desc');
-    const [isLoading, setIsLoading] = useState(false);
-    const navigate = useNavigate();
+	const [moviesData, setMoviesData] = useState({});
+	const [currentPage, setCurrentPage] = useState(1);
+	const [currentFilter, setCurrentFilter] = useState('popularity.desc');
+	const [isLoading, setIsLoading] = useState(false);
+	const navigate = useNavigate();
 
-    useEffect(() => {
-        const fetchMovies = async () => {
-            const movies = await getMoviesWithPages(currentPage, currentFilter);
-            setMoviesData(movies);
-            window.scrollTo(0, 0);
-        }
+	useEffect(() => {
+		setIsLoading(true);
+		getMoviesWithPages(currentPage, currentFilter)
+			.then((movies) => {
+				setMoviesData(movies);
+				window.scrollTo(0, 0);
+				setIsLoading(false);
+			})
+			.catch((err) => navigate('/error'));
+            
+	}, [currentPage, currentFilter, navigate]);
 
-        setIsLoading(true);
+	const changePageHandler = (selectedPage) => {
+		setCurrentPage(selectedPage);
+	};
 
-        const timer = setTimeout(async () => {
-            try {
-                await fetchMovies();
-            } catch (error) {
-                navigate('/error');
-            }
+	const changeSortQueryHandler = (selectedQuery) => {
+		setCurrentFilter(selectedQuery);
+	};
 
-            setIsLoading(false);
-        }, 1000);
+	const showMovies = (
+		<>
+			<Sorter
+				currentFilter={currentFilter}
+				changeSortQueryHandler={changeSortQueryHandler}
+			/>
+			<CardList>
+				{moviesData.results?.map((movie) => (
+					<Link key={movie.id} to={`/movie/${movie.id}/details`}>
+						<Card poster={movie.poster_path} title={movie.title} />
+					</Link>
+				))}
+			</CardList>
+			<Pagination
+				changePageHandler={changePageHandler}
+				currentPage={currentPage}
+				lastPage={moviesData.total_pages > 500 ? 500 : moviesData.total_pages}
+			/>
+			<BackToTop />
+		</>
+	);
 
-        return () => clearTimeout(timer);
-    },
-        [currentPage, currentFilter, navigate]);
-
-    const changePageHandler = (selectedPage) => {
-        setCurrentPage(selectedPage);
-    };
-
-    const changeSortQueryHandler = (selectedQuery) => {
-        setCurrentFilter(selectedQuery);
-    };
-
-    const showMovies = <>
-        <Sorter currentFilter={currentFilter} changeSortQueryHandler={changeSortQueryHandler} />
-        <CardList>{moviesData.results?.map(movie => <Link key={movie.id} to={`/movie/${movie.id}/details`}><Card poster={movie.poster_path} title={movie.title} /></Link>)}</CardList>
-        <Pagination changePageHandler={changePageHandler} currentPage={currentPage} lastPage={moviesData.total_pages > 500 ? 500 : moviesData.total_pages} />
-        <BackToTop />
-    </>;
-
-    return (
-        <>
-            {isLoading ? <Loader /> : showMovies}
-        </>
-    );
+	return <>{isLoading ? <Loader /> : showMovies}</>;
 };
 
 export default MoviesPage;
